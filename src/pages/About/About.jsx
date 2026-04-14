@@ -12,7 +12,7 @@ function About() {
 
         <div className="photo-card">
           <div className="photo-animate">
-            <img src="public/lokesh.png" alt="Lokesh profile" />
+            <img src="/lokesh.png" alt="Lokesh profile" />
           </div>
         </div>
 

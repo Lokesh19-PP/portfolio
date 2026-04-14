@@ -28,7 +28,7 @@ function Services(){
             <h4>Certification</h4>
             <div className="certification-links">
               <a
-                href={`${import.meta.env.BASE_URL}public/Intern_certificate.pdf`}
+                href={`${import.meta.env.BASE_URL}Intern_certificate.pdf`}
                 target="_blank"
                 rel="noreferrer"
               >
