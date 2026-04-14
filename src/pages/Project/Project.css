@@ -1,0 +1,159 @@
+.project{
+    margin:70px auto;
+    max-width:980px;
+    padding:40px;
+}
+
+.title{
+    margin-bottom:70px;
+    font-size:42px;
+    color:#625f5f;
+    text-align:center;
+    position:relative;
+}
+
+.title::after{
+    content:"";
+    width:120px;
+    height:3px;
+    background:#3e3e3e;
+    display:block;
+    margin:15px auto 0;
+    border-radius:2px;
+}
+
+.projects-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+/* CARD */
+
+.project-card{
+    background:#f7f7f7;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.35s;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+
+.project-card img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+    object-fit:contain;
+    background:#111;
+    margin:0;
+    display:block;
+    border-radius:0;
+    transition:0.4s;
+}
+
+.project-card:hover img{
+    transform:scale(1.05);
+}
+
+/* TEXT */
+
+.project-card h3{
+    font-size:18px;
+    margin:12px;
+    color:var(--text-color);
+}
+
+.project-card p{
+    margin:0 12px 12px;
+    font-size:13px;
+    color:#666;
+    line-height:1.5;
+}
+
+/* SKILLS */
+
+.skills{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-bottom:10px;
+}
+
+.skills span{
+    font-size:11px;
+    padding:4px 10px;
+    background:#222;
+    color:#fff;
+    border-radius:20px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.skills span:hover{
+    background:#555;
+}
+
+/* BUTTONS */
+
+.btns{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    padding-bottom:14px;
+}
+
+.btn{
+    padding:6px 13px;
+    border-radius:25px;
+    border:1px solid #333;
+    text-decoration:none;
+    font-size:12px;
+    color:#333;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#333;
+    color:#fff;
+}
+
+@media (max-width: 900px){
+  .project{
+    padding:26px 16px;
+    margin:44px auto;
+  }
+
+  .title{
+    margin-bottom:34px;
+    font-size:34px;
+  }
+
+  .projects-container{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .project-card{
+    border-radius:12px;
+  }
+
+  .project-card h3{
+    font-size:16px;
+  }
+
+  .project-card p{
+    font-size:12px;
+  }
+
+  .btns{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+}
