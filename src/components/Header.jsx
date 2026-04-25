@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { SiLeetcode } from "react-icons/si"
+import { FaSun, FaMoon } from "react-icons/fa"
 
-function Header() {
+function Header({ theme, toggleTheme }) {
 
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
@@ -41,14 +42,16 @@ function Header() {
                 <h1><span>L</span>okesh</h1>
             </div>
 
-            <button
-                type="button"
-                className="menu-toggle"
-                aria-label="Toggle menu"
-                onClick={() => setMenuOpen(!menuOpen)}
-            >
-                <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
-            </button>
+            <div className="header-actions">
+                <button
+                    type="button"
+                    className="menu-toggle"
+                    aria-label="Toggle menu"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+                    <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
+                </button>
+            </div>
 
             <div className={menuOpen ? "nav-wrap open" : "nav-wrap"}>
                 <ul className="links">
@@ -63,9 +66,13 @@ function Header() {
                 <ul className="icons">
                     <li><a href="https://github.com/Lokesh19-PP" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a></li>
                     <li><a href="https://leetcode.com/u/lokesh191005/" target="_blank" rel="noreferrer"><SiLeetcode /></a></li>
-                    <li><a href="https://www.instagram.com/Lokesh_Pawar_19/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram} /></a></li>
-                    <li><a href="https://www.linkedin.com/in/lokesh-pawar-4b834a312/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a></li>
+                    <li><a href="https://linkedin.com/in/lokesh-pawar-4b834a312/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a></li>
+                    <li><a href="https://www.instagram.com/lokesh_pawar_19/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram} /></a></li>
                 </ul>
+
+                <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
+                    {theme === 'dark' ? <FaSun /> : <FaMoon />}
+                </button>
             </div>
         </header>
     )

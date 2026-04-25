@@ -40,47 +40,58 @@ export default function Project() {
         <h2>Project</h2>
       </div>
 
-      <div className="projects-container">
+      <div className="projects-list">
         {projects.map((project, index) => (
-          <div className="project-card" key={index}>
-            <img src={project.img} alt={project.title} />
-
-            <h3>{project.title}</h3>
-            <p>{project.desc}</p>
-
-            <div className="skills">
-              {project.skills.map((skill, i) => (
-                <span key={i}>{skill}</span>
-              ))}
+          <div className={`project-item ${index % 2 === 0 ? 'row' : 'row-reverse'}`} key={index}>
+            <div className="project-image">
+              <img src={project.img} alt={project.title} />
+              <div className="image-overlay"></div>
             </div>
 
-            {(project.github || project.liveDemo) && (
-              <div className="btns">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    className="btn"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fab fa-github"></i> GitHub
-                  </a>
-                )}
+            <div className="project-details">
+              <span className="project-number">0{index + 1}</span>
+              <h3>{project.title}</h3>
+              <p>{project.desc}</p>
 
-                {!project.hideLiveDemo && project.liveDemo && (
-                  <a
-                    href={project.liveDemo}
-                    className="btn"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fas fa-external-link-alt"></i> Live Demo
-                  </a>
-                )}
+              <div className="skills">
+                {project.skills.map((skill, i) => (
+                  <span key={i}>{skill}</span>
+                ))}
               </div>
-            )}
+
+              {(project.github || project.liveDemo) && (
+                <div className="btns">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      className="btn"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fab fa-github"></i> GitHub
+                    </a>
+                  )}
+
+                  {!project.hideLiveDemo && project.liveDemo && (
+                    <a
+                      href={project.liveDemo}
+                      className="btn"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         ))}
+      </div>
+      <div style={{ textAlign: 'center', marginTop: '60px' }}>
+        <a href="https://github.com/Lokesh19-PP" target="_blank" rel="noreferrer" className="btn-secondary">
+          View More on GitHub
+        </a>
       </div>
     </section>
   );

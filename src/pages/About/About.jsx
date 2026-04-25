@@ -16,7 +16,7 @@ function About() {
           </div>
         </div>
 
-        <div className="text-about">
+        <div className="text-about glass-card" style={{ padding: '32px', borderRadius: '24px' }}>
           <p>
             I am an aspiring software developer with a strong foundation in Python, web
             development, and data structures and algorithms. Currently pursuing B.E. in Computer
