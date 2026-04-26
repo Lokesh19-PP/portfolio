@@ -107,6 +107,12 @@ section {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  section {
+    padding: 60px 5%;
+  }
+}
+
 /* Animated Background Elements */
 .bg-gradient-orb {
   position: fixed;

@@ -79,7 +79,7 @@
   animation: slideInLeft 1.8s ease-out;
 }
 
-
+/* ── Hero canvas visual ──────────────────────────────────────── */
 .hero-visual {
   flex: 1;
   height: 600px;
@@ -87,196 +87,14 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  perspective: 2000px;
   z-index: 1;
-  overflow: visible;
-}
-
-.hypercube-matrix {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  transform-style: preserve-3d;
-  display: grid;
-  place-items: center;
-}
-
-.hypercube {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  animation: hyperRotate 12s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-.inner-cube {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 100px;
-  height: 100px;
-  transform-style: preserve-3d;
-  animation: innerRotate 8s linear infinite reverse;
-}
-
-@keyframes hyperRotate {
-  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-  50% { transform: rotateX(180deg) rotateY(360deg) rotateZ(90deg); }
-  100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg); }
-}
-
-@keyframes innerRotate {
-  from { transform: rotateY(0deg) rotateX(0deg); }
-  to { transform: rotateY(360deg) rotateX(360deg); }
-}
-
-.face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--primary);
-  background: rgba(99, 102, 241, 0.05);
-  backdrop-filter: blur(2px);
-  box-shadow: inset 0 0 30px var(--primary-glow), 0 0 20px var(--primary-glow);
-}
-
-.hypercube .face { border-width: 1px; opacity: 0.6; }
-.inner-cube .face { border-color: var(--secondary); box-shadow: inset 0 0 20px var(--secondary-glow); opacity: 0.9; }
-
-/* Cube Face Positions */
-.f-front  { transform: translateZ(100px); }
-.f-back   { transform: rotateY(180deg) translateZ(100px); }
-.f-right  { transform: rotateY(90deg) translateZ(100px); }
-.f-left   { transform: rotateY(-90deg) translateZ(100px); }
-.f-top    { transform: rotateX(90deg) translateZ(100px); }
-.f-bottom { transform: rotateX(-90deg) translateZ(100px); }
-
-.inner-cube .f-front  { transform: translateZ(50px); }
-.inner-cube .f-back   { transform: rotateY(180deg) translateZ(50px); }
-.inner-cube .f-right  { transform: rotateY(90deg) translateZ(50px); }
-.inner-cube .f-left   { transform: rotateY(-90deg) translateZ(50px); }
-.inner-cube .f-top    { transform: rotateX(90deg) translateZ(50px); }
-.inner-cube .f-bottom { transform: rotateX(-90deg) translateZ(50px); }
-
-.energy-field {
-  position: absolute;
-  inset: -150px;
-  transform-style: preserve-3d;
-  pointer-events: none;
-}
-
-.nano-bot {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: var(--text-main);
-  border-radius: 50%;
-  box-shadow: 0 0 8px #fff;
-  opacity: 0;
-}
-
-/* Create 50 unique animations for nano-bots using a loop-like approach in CSS */
-.nano-bot:nth-child(5n+1) { animation: botMove1 6s infinite; }
-.nano-bot:nth-child(5n+2) { animation: botMove2 8s infinite 1s; }
-.nano-bot:nth-child(5n+3) { animation: botMove3 7s infinite 0.5s; }
-.nano-bot:nth-child(5n+4) { animation: botMove4 9s infinite 2s; }
-.nano-bot:nth-child(5n+5) { animation: botMove5 10s infinite 1.5s; }
-
-@keyframes botMove1 { 0% { transform: translate3d(0,0,0); opacity: 0; } 50% { transform: translate3d(200px, -150px, 100px); opacity: 1; } 100% { transform: translate3d(-100px, 100px, -200px); opacity: 0; } }
-@keyframes botMove2 { 0% { transform: translate3d(100px,100px,0); opacity: 0; } 50% { transform: translate3d(-200px, 50px, 200px); opacity: 1; } 100% { transform: translate3d(50px, -200px, -100px); opacity: 0; } }
-@keyframes botMove3 { 0% { transform: translate3d(-100px,-50px,100px); opacity: 0; } 50% { transform: translate3d(150px, 200px, -50px); opacity: 1; } 100% { transform: translate3d(0, -100px, 150px); opacity: 0; } }
-@keyframes botMove4 { 0% { transform: translate3d(50px, -200px, -100px); opacity: 0; } 50% { transform: translate3d(-100px, 0, 150px); opacity: 1; } 100% { transform: translate3d(200px, 150px, 0); opacity: 0; } }
-@keyframes botMove5 { 0% { transform: translate3d(0, 150px, -200px); opacity: 0; } 50% { transform: translate3d(100px, -50px, 0); opacity: 1; } 100% { transform: translate3d(-150px, 200px, 100px); opacity: 0; } }
-
-.grid-warp {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background-image: 
-    linear-gradient(var(--glass-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-  background-size: 50px 50px;
-  transform: rotateX(60deg) translateZ(-200px);
-  opacity: 0.2;
-  z-index: 0;
-}
-
-.prism-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(20px);
-  box-shadow: 
-    0 0 40px var(--primary),
-    0 0 80px var(--secondary),
-    0 0 120px var(--accent);
-  animation: coreFlicker 0.2s infinite alternate;
-}
-
-@keyframes coreFlicker {
-  from { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-}
-
-.shell-ring {
-  position: absolute;
-  border: 1px solid var(--primary);
-  border-radius: 50%;
-  opacity: 0.3;
-  transform-style: preserve-3d;
-}
-
-.r-1 { width: 450px; height: 450px; border-style: dashed; animation: rotateX 10s linear infinite; }
-.r-2 { width: 520px; height: 520px; border-color: var(--secondary); animation: rotateY 15s linear infinite reverse; }
-.r-3 { width: 380px; height: 380px; border-color: var(--accent); border-width: 2px; animation: rotateZ 12s linear infinite; }
-
-@keyframes rotateX { from { transform: rotateX(0deg) rotateZ(0deg); } to { transform: rotateX(360deg) rotateZ(360deg); } }
-@keyframes rotateY { from { transform: rotateY(0deg) rotateX(45deg); } to { transform: rotateY(360deg) rotateX(45deg); } }
-@keyframes rotateZ { from { transform: rotateZ(0deg) rotateY(-45deg); } to { transform: rotateZ(360deg) rotateY(-45deg); } }
-
-.glitch-overlay {
-  position: absolute;
-  inset: -100px;
-  background: radial-gradient(circle, transparent 50%, var(--primary-glow) 100%);
-  opacity: 0.05;
-  pointer-events: none;
-  animation: glitchPulse 8s infinite;
-}
-
-@keyframes glitchPulse {
-  0%, 100% { opacity: 0.05; transform: scale(1); }
-  95% { opacity: 0.05; transform: scale(1); }
-  96% { opacity: 0.2; transform: scale(1.1) skewX(5deg); }
-  97% { opacity: 0.05; transform: scale(1); }
-  98% { opacity: 0.2; transform: scale(0.9) skewY(-5deg); }
-}
-
-.scanline-v {
-  position: absolute;
-  top: -10%;
-  left: 50%;
-  width: 2px;
-  height: 120%;
-  background: linear-gradient(to bottom, transparent, var(--secondary), transparent);
-  opacity: 0.3;
-  animation: scanV 4s ease-in-out infinite;
-  box-shadow: 0 0 15px var(--secondary-glow);
-}
-
-@keyframes scanV {
-  0% { transform: translateX(-200px) scaleY(0); opacity: 0; }
-  50% { opacity: 0.8; transform: translateX(0) scaleY(1); }
-  100% { transform: translateX(200px) scaleY(0); opacity: 0; }
+  overflow: hidden;
+  border-radius: 24px;
 }
 
 @keyframes slideInLeft {
   from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 1024px) {
@@ -285,24 +103,50 @@
     text-align: center;
     padding-top: 100px;
   }
-  
+
   .hero-left {
     align-items: center;
   }
-  
+
   .hero-stats {
     justify-content: center;
   }
-  
+
   .buttn {
     justify-content: center;
   }
-  
+
   .hero-visual {
     width: 100%;
     height: 400px;
     margin-top: 40px;
   }
+}
+
+@media (max-width: 768px) {
+  .hero-left h1 {
+    font-size: clamp(36px, 8vw, 48px);
+  }
   
-  .hypercube { transform: scale(0.7); }
+  .hero-role {
+    font-size: 16px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .buttn {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .buttn a {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-visual {
+    height: 280px;
+    margin-top: 20px;
+  }
 }

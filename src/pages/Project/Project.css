@@ -151,3 +151,32 @@
   }
 }
 
+@media (max-width: 768px) {
+  .projects-list {
+    gap: 60px;
+  }
+  
+  .project-item {
+    gap: 20px;
+  }
+  
+  .project-details p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .skills {
+    justify-content: center;
+  }
+}
+

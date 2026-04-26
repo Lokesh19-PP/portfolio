@@ -120,3 +120,31 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 480px) {
+  .experience-card {
+    padding: 24px 16px;
+  }
+  
+  .service-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .experience-card h3 {
+    font-size: 20px;
+  }
+  
+  .experience-card li {
+    font-size: 15px;
+    padding-left: 20px;
+  }
+  
+  .certification-links {
+    flex-direction: column;
+  }
+  
+  .certification-links a {
+    text-align: center;
+  }
+}
