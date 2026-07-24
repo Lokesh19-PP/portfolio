@@ -1,10 +1,20 @@
 import "./Project.css";
 
+import img0 from "../../assets/images/reposense.png";
 import img1 from "../../assets/images/travel-planner.png";
 import img2 from "../../assets/images/bookbazzar.png";
 import img3 from "../../assets/images/nutrihurb.png";
 
 const projects = [
+  {
+    title: "RepoSensei",
+    img: img0,
+    desc: "A full-stack developer intelligence platform built for DevClash Hackathon by Team Vanar Sena. It ingests any public GitHub repository and generates an interactive 3D/2D dependency graph, AI-written file summaries, and natural language querying — replacing slow, manual codebase exploration with a visual, guided, and explainable workflow.",
+    skills: ["React", "TypeScript", "FastAPI", "Neo4j", "Tree-sitter", "Celery", "Redis", "PostgreSQL", "Groq"],
+    github: "https://github.com/Lokesh19-PP/RepoSensei",
+    liveDemo: "https://youtu.be/QCqJbYiYElo",
+  },
+
   {
     title: "Travel Planner Web Application",
     img: img1,
