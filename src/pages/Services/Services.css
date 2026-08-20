@@ -1,150 +1,380 @@
-.services {
-  padding: 100px 5%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+/* ===================================================
+   JOURNEY SECTION (Experience + Education) — VIEWPORT-FITTING
+   =================================================== */
 
-.experience-container {
+.journey-section {
+  min-height: 100vh;
+  padding: clamp(50px, 7vh, 80px) 5%;
+  background: #F5F0E8;
+  border-bottom: 3px solid #111111;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
 }
 
-.experience-card {
+.journey-max {
+  max-width: 1400px;
+  margin: 0 auto;
   width: 100%;
-  max-width: 900px;
-  padding: 48px;
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  position: relative;
-  transition: all 0.4s ease;
 }
 
-.experience-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 10px 40px -10px var(--primary-glow);
+.journey-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #111111;
+  margin-top: 10px;
+  margin-bottom: clamp(24px, 4vh, 48px);
 }
 
-.service-icon {
-  font-size: 40px;
-  color: var(--primary);
-  margin-bottom: 24px;
-  filter: drop-shadow(0 0 10px var(--primary-glow));
+.journey-accent {
+  -webkit-text-stroke: 2px #111111;
+  color: transparent;
 }
 
-.experience-card h3 {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  color: var(--text-main);
-  margin-bottom: 8px;
+/* Timeline container */
+.journey-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.experience-meta {
-  color: var(--secondary);
-  font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 32px;
-  display: block;
+/* Timeline item */
+.journey-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0;
+  border-top: 3px solid #111111;
 }
 
-.experience-card ul {
+.journey-item:last-child {
+  border-bottom: 3px solid #111111;
+}
+
+/* Year column */
+.journey-year-col {
+  padding: clamp(20px, 3vh, 32px) 20px clamp(20px, 3vh, 32px) 0;
+  border-right: 3px solid #111111;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.journey-type-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.badge-red  { background: #FF5C35; color: #fff; }
+.badge-blue { background: #5B5BF7; color: #fff; }
+
+.journey-year {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: #111111;
+}
+
+.journey-period {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  color: #111111;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+}
+
+/* Content column */
+.journey-content-col {
+  padding: clamp(20px, 3vh, 32px) 0 clamp(20px, 3vh, 32px) 36px;
+}
+
+.journey-card {
+  background: #F5F0E8;
+}
+
+.journey-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.journey-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111111;
+  margin-bottom: 2px;
+}
+
+.journey-org {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: #111111;
+  opacity: 0.55;
+}
+
+.journey-grade-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  background: #D9FF00;
+  color: #111111;
+  border: 1.5px solid #111111;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0 #111111;
+  flex-shrink: 0;
+}
+
+/* Points list */
+.journey-points {
   list-style: none;
-  padding: 0;
-  margin-bottom: 40px;
-}
-
-.experience-card li {
-  color: var(--text-muted);
-  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 16px;
-  padding-left: 28px;
-  position: relative;
 }
 
-.experience-card li::before {
-  content: "→";
+.journey-points li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.82rem, 0.95vw, 0.9rem);
+  line-height: 1.5;
+  color: #111111;
+  padding-left: 20px;
+  position: relative;
+  opacity: 0.8;
+}
+
+.journey-points li::before {
+  content: '→';
   position: absolute;
   left: 0;
-  color: var(--primary);
-  font-weight: bold;
+  color: #FF5C35;
+  font-weight: 700;
 }
 
-.certification-block {
-  margin-top: 32px;
-  padding-top: 32px;
-  border-top: 1px solid var(--glass-border);
+.journey-cert {
+  padding-top: 4px;
 }
 
-.certification-block h4 {
-  font-family: var(--font-heading);
-  color: var(--text-main);
-  font-size: 20px;
-  margin-bottom: 20px;
+.journey-cert .btn-brut-outline {
+  padding: 8px 16px;
+  font-size: 0.75rem;
 }
 
-.certification-links {
+/* ===================================================
+   LET'S CONNECT SECTION — VIEWPORT-FITTING
+   =================================================== */
+
+.connect-section {
+  background: #111111;
+  border-bottom: 3px solid #111111;
+  padding: clamp(50px, 6vw, 80px) 5%;
+  box-sizing: border-box;
+}
+
+.connect-max {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: center;
+}
+
+/* Header */
+.connect-section-label {
+  color: #F5F0E8 !important;
+  opacity: 0.5;
+}
+
+.connect-section-label::after {
+  background: #F5F0E8 !important;
+}
+
+.connect-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #F5F0E8;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+.connect-accent {
+  -webkit-text-stroke: 2px #F5F0E8;
+  color: transparent;
+}
+
+.connect-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #F5F0E8;
+  opacity: 0.45;
+}
+
+/* Link blocks grid */
+.connect-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 3px solid rgba(245, 240, 232, 0.25);
+  align-self: center;
+}
+
+/* Individual link block */
+.connect-link-block {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.certification-links a {
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(20px, 2.5vh, 28px) clamp(16px, 2vw, 24px);
+  border-right: 2px solid rgba(245, 240, 232, 0.15);
+  border-bottom: 2px solid rgba(245, 240, 232, 0.15);
   text-decoration: none;
-  color: white;
-  background: var(--primary);
-  padding: 10px 24px;
-  border-radius: var(--radius-full);
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px var(--primary-glow);
+  transition: background 0.2s ease, transform 0.15s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.certification-links a:hover {
-  transform: translateY(-3px);
-  background: #4f46e5;
-  box-shadow: 0 8px 20px var(--primary-glow);
+.connect-link-block:nth-child(2n) {
+  border-right: none;
 }
 
-@media (max-width: 768px) {
-  .experience-card {
-    padding: 32px 24px;
+.connect-link-block:nth-child(3),
+.connect-link-block:nth-child(4) {
+  border-bottom: none;
+}
+
+.connect-link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.connect-link-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #F5F0E8;
+  transition: color 0.15s ease;
+}
+
+.connect-link-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #F5F0E8;
+  opacity: 0.4;
+  transition: opacity 0.15s ease;
+}
+
+.connect-link-arrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #F5F0E8;
+  opacity: 0.3;
+  transition: opacity 0.15s ease, transform 0.2s ease;
+}
+
+/* Hover states */
+.connect-red:hover    { background: #FF5C35; }
+.connect-blue:hover   { background: #5B5BF7; }
+.connect-yellow:hover { background: #D9FF00; }
+.connect-yellow:hover .connect-link-label,
+.connect-yellow:hover .connect-link-sub,
+.connect-yellow:hover .connect-link-arrow { color: #111111; }
+
+.connect-link-block:hover .connect-link-sub  { opacity: 0.75; }
+.connect-link-block:hover .connect-link-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+@media (max-width: 1000px) {
+  .journey-section,
+  .connect-section {
+    min-height: auto;
+    padding: 70px 5%;
   }
-  
-  .experience-card h3 {
-    font-size: 22px;
+
+  .journey-item {
+    grid-template-columns: 140px 1fr;
   }
-  
-  .experience-meta {
-    font-size: 14px;
+
+  .journey-year-col {
+    padding: 20px 16px 20px 0;
+  }
+
+  .journey-content-col {
+    padding: 20px 0 20px 24px;
+  }
+
+  .connect-max {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 }
 
-@media (max-width: 480px) {
-  .experience-card {
-    padding: 24px 16px;
+@media (max-width: 700px) {
+  .journey-section,
+  .connect-section {
+    padding: 60px 5%;
   }
-  
-  .service-icon {
-    font-size: 32px;
-    margin-bottom: 16px;
+
+  .journey-item {
+    grid-template-columns: 1fr;
   }
-  
-  .experience-card h3 {
-    font-size: 20px;
+
+  .journey-year-col {
+    border-right: none;
+    border-bottom: 2px solid #111111;
+    padding: 16px 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
   }
-  
-  .experience-card li {
-    font-size: 15px;
-    padding-left: 20px;
+
+  .journey-year {
+    font-size: 1.8rem;
   }
-  
-  .certification-links {
-    flex-direction: column;
+
+  .journey-content-col {
+    padding: 20px 0 0;
   }
-  
-  .certification-links a {
-    text-align: center;
+
+  .connect-links {
+    grid-template-columns: 1fr;
+  }
+
+  .connect-link-block {
+    border-right: none !important;
+    border-bottom: 2px solid rgba(245, 240, 232, 0.15) !important;
+  }
+
+  .connect-link-block:last-child {
+    border-bottom: none !important;
   }
 }
