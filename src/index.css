@@ -1,188 +1,304 @@
+/* ===================================================
+   NEO-BRUTALIST DESIGN SYSTEM
+   Lokesh Pawar Portfolio
+   =================================================== */
+
 :root {
-  /* Default Dark Theme */
-  --bg-dark: #050505;
-  --bg-card: rgba(15, 15, 15, 0.7);
-  --primary: #6366f1;
-  --primary-glow: rgba(99, 102, 241, 0.3);
-  --secondary: #06b6d4;
-  --secondary-glow: rgba(6, 182, 212, 0.3);
-  --accent: #a855f7;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  
-  /* Shared variables */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-full: 9999px;
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --bg: #F5F0E8;
+  --ink: #111111;
+  --white: #FFFFFF;
+  --accent-red: #FF5C35;
+  --accent-yellow: #D9FF00;
+  --accent-blue: #5B5BF7;
+  --border: 3px solid #111111;
+  --border-thin: 2px solid #111111;
+  --border-thick: 4px solid #111111;
+  --shadow: 6px 6px 0 #111111;
+  --shadow-sm: 4px 4px 0 #111111;
+  --shadow-lg: 8px 8px 0 #111111;
+  --shadow-accent: 6px 6px 0 #FF5C35;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 0px;
+  --radius-sm: 4px;
+  --max-width: 1400px;
+  --section-pad: 120px 5%;
 }
 
-[data-theme='light'] {
-  --bg-dark: #f8fafc;
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --primary: #4f46e5;
-  --primary-glow: rgba(79, 70, 229, 0.2);
-  --secondary: #0891b2;
-  --secondary-glow: rgba(8, 145, 178, 0.2);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --glass-bg: rgba(0, 0, 0, 0.02);
-}
-
-[data-theme='light'] .bg-gradient-orb {
-  opacity: 0.08;
-}
-
-
-* {
+/* ===================================================
+   RESET
+   =================================================== */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  background-color: var(--bg);
+  color: var(--ink);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ===================================================
+   TYPOGRAPHY
+   =================================================== */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-weight: 700;
+  line-height: 1.05;
   letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
-/* Glassmorphism Utility */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
+p {
+  font-family: var(--font-body);
+  color: var(--ink);
 }
 
-.glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.glass-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 10px 30px -10px var(--primary-glow);
-  transform: translateY(-5px);
-}
-
-/* Scrollbar */
+/* ===================================================
+   SCROLLBAR
+   =================================================== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 10px;
+  background: var(--ink);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #333;
-}
-
-/* Section Spacing */
-section {
-  padding: 100px 5%;
-  max-width: 1400px;
+/* ===================================================
+   LAYOUT UTILITIES
+   =================================================== */
+.container {
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 5%;
 }
 
-@media (max-width: 768px) {
-  section {
-    padding: 60px 5%;
+section {
+  padding: var(--section-pad);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ===================================================
+   SECTION SEPARATOR
+   =================================================== */
+.section-sep {
+  width: 100%;
+  height: 3px;
+  background: var(--ink);
+}
+
+/* ===================================================
+   SECTION LABEL (e.g. "01 / ABOUT ME")
+   =================================================== */
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.section-label::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--ink);
+}
+
+/* ===================================================
+   BRUTALIST BUTTONS
+   =================================================== */
+.btn-brut {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: var(--border);
+  background: var(--ink);
+  color: var(--bg);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn-brut:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow);
+}
+
+.btn-brut:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.btn-brut-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: var(--border);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn-brut-outline:hover {
+  background: var(--accent-yellow);
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow);
+}
+
+.btn-brut-outline:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.btn-accent {
+  background: var(--accent-red);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+.btn-accent:hover {
+  background: var(--accent-red);
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow);
+  color: var(--white);
+}
+
+/* ===================================================
+   SCROLL REVEAL ANIMATIONS
+   =================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* ===================================================
+   BRUTALIST CARD BASE
+   =================================================== */
+.brut-card {
+  border: var(--border);
+  background: var(--bg);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brut-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow);
+}
+
+/* ===================================================
+   STICKER / BADGE
+   =================================================== */
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: var(--border-thin);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* ===================================================
+   RESPONSIVE BASE
+   =================================================== */
+@media (max-width: 1024px) {
+  :root {
+    --section-pad: 90px 5%;
   }
 }
 
-/* Animated Background Elements */
-.bg-gradient-orb {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(100px);
-  z-index: -1;
-  opacity: 0.15;
-  pointer-events: none;
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 70px 5%;
+    --shadow: 4px 4px 0 #111111;
+    --shadow-sm: 3px 3px 0 #111111;
+    --shadow-lg: 5px 5px 0 #111111;
+  }
 }
 
-.orb-primary {
-  top: -100px;
-  right: -100px;
-  background: var(--primary);
-  animation: float 15s ease-in-out infinite;
-}
-
-.orb-secondary {
-  bottom: -100px;
-  left: -100px;
-  background: var(--secondary);
-  animation: float 20s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-/* Button Styles */
-.btn-primary {
-  padding: 12px 28px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-primary:hover {
-  background: #4f46e5;
-  box-shadow: 0 0 20px var(--primary-glow);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  padding: 12px 28px;
-  background: transparent;
-  color: var(--text-main);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-secondary:hover {
-  background: var(--glass-bg);
-  border-color: var(--text-main);
-  transform: translateY(-2px);
+@media (max-width: 480px) {
+  :root {
+    --section-pad: 60px 5%;
+  }
 }

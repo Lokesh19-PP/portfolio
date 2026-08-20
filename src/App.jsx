@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import Header from "./components/Header"
 import Hero from "./pages/Hero/Hero"
+import Marquee from "./pages/Hero/Marquee"
 import About from "./pages/About/About"
 import Skills from "./pages/About/Skills"
 import Project from "./pages/Project/Project"
@@ -9,33 +10,39 @@ import Contact from "./pages/Contact/Contact"
 import Footer from "./pages/Footer/Footer"
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
-
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
+    const revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+    revealEls.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
-      <div className="bg-gradient-orb orb-primary"></div>
-      <div className="bg-gradient-orb orb-secondary"></div>
-      <div className="bg-gradient-orb orb-accent"></div>
-      <Header theme={theme} toggleTheme={toggleTheme} />
-
-      <Hero />
-      <About />
-      <Skills />
-      <Project />
-      <Services />
-      <Contact />
+      <Header />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Skills />
+        <Project />
+        <Services />
+        <Contact />
+      </main>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
