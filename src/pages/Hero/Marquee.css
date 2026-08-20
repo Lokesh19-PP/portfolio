@@ -1,0 +1,58 @@
+/* ===================================================
+   MARQUEE STRIP
+   =================================================== */
+
+.marquee-strip {
+  background: #111111;
+  border-top: 3px solid #111111;
+  border-bottom: 3px solid #111111;
+  padding: 18px 0;
+  overflow: hidden;
+  width: 100%;
+  cursor: default;
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.marquee-strip:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F5F0E8;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.marquee-dot {
+  font-size: 0.5rem;
+  color: #FF5C35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
