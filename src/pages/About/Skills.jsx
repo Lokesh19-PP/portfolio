@@ -1,95 +1,112 @@
 import "./Skills.css";
-import {
-FaHtml5,
-FaCss3Alt,
-FaJs,
-FaGitAlt,
-FaGithub,
-FaLaptopCode,
-FaChartBar
-} from "react-icons/fa";
 
-import {
-SiTailwindcss,
-SiMysql,
-SiPhp,
-SiDjango,
-SiPython,
-SiSqlite,
-SiBootstrap
-} from "react-icons/si";
-
-function Skills(){
-const levelWidth = {
-  Beginner: "42%",
-  Intermediate: "68%",
-  Advanced: "90%",
-};
-
-const skillLevels = [
-  { category: "Frontend", skills: [
-    { name: "HTML", level: "Advanced" },
-    { name: "CSS", level: "Advanced" },
-    { name: "JavaScript", level: "Intermediate" },
-    { name: "Bootstrap", level: "Intermediate" },
-    { name: "Tailwind CSS", level: "Intermediate" },
-  ]},
-  { category: "Backend & Database", skills: [
-    { name: "Python", level: "Advanced" },
-    { name: "Django", level: "Intermediate" },
-    { name: "PHP", level: "Intermediate" },
-    { name: "MySQL", level: "Intermediate" },
-    { name: "SQLite", level: "Intermediate" },
-  ]},
-  { category: "Tools & Concepts", skills: [
-    { name: "Git & GitHub", level: "Intermediate" },
-    { name: "VS Code", level: "Advanced" },
-    { name: "Power BI", level: "Intermediate" },
-    { name: "OOP & DSA", level: "Intermediate" },
-    { name: "Problem Solving", level: "Advanced" },
-  ]},
+const skillCategories = [
+  {
+    name: "LANGUAGES",
+    accent: "red",
+    skills: [
+      { name: "Python", icon: "🐍" },
+      { name: "JavaScript", icon: "JS" },
+      { name: "PHP", icon: "🐘" },
+      { name: "HTML", icon: "◈" },
+      { name: "CSS", icon: "✦" },
+    ],
+  },
+  {
+    name: "FRONTEND",
+    accent: "yellow",
+    skills: [
+      { name: "React", icon: "⚛" },
+      { name: "Tailwind CSS", icon: "🌊" },
+      { name: "Bootstrap", icon: "B" },
+      { name: "JavaScript", icon: "JS" },
+      { name: "HTML / CSS", icon: "◈" },
+    ],
+  },
+  {
+    name: "BACKEND",
+    accent: "blue",
+    skills: [
+      { name: "Django", icon: "🎸" },
+      { name: "REST Framework", icon: "⚡" },
+      { name: "FastAPI", icon: "🚀" },
+      { name: "PHP", icon: "🐘" },
+    ],
+  },
+  {
+    name: "DATABASE",
+    accent: "red",
+    skills: [
+      { name: "MySQL", icon: "🗄" },
+      { name: "PostgreSQL", icon: "🐘" },
+      { name: "SQLite", icon: "◼" },
+      { name: "Neo4j", icon: "◉" },
+    ],
+  },
+  {
+    name: "TOOLS",
+    accent: "yellow",
+    skills: [
+      { name: "Git", icon: "⎇" },
+      { name: "GitHub", icon: "⊛" },
+      { name: "VS Code", icon: "◧" },
+      { name: "Power BI", icon: "📊" },
+      { name: "Celery", icon: "⚙" },
+      { name: "Redis", icon: "◈" },
+    ],
+  },
 ];
 
-return(
-<section className="skills-section" id="skills">
-  <div className="title">
-    <h2>Skills</h2>
-  </div>
+export default function Skills() {
+  return (
+    <section className="skills-section" id="skills" aria-labelledby="skills-heading">
 
-  <div className="skills-slider">
-    <div className="skills-track">
-      <FaHtml5/><FaCss3Alt/><FaJs/><SiBootstrap/><SiTailwindcss/>
-      <SiPython/><SiDjango/><SiPhp/><SiMysql/><SiSqlite/>
-      <FaGitAlt/><FaGithub/><FaLaptopCode/><FaChartBar/>
-
-      <FaHtml5/><FaCss3Alt/><FaJs/><SiBootstrap/><SiTailwindcss/>
-      <SiPython/><SiDjango/><SiPhp/><SiMysql/><SiSqlite/>
-      <FaGitAlt/><FaGithub/><FaLaptopCode/><FaChartBar/>
-    </div>
-  </div>
-
-  <div className="levels-grid">
-    {skillLevels.map((group) => (
-      <div className="level-card" key={group.category}>
-        <h3>{group.category}</h3>
-        {group.skills.map((skill) => (
-          <div className="skill-level-item" key={skill.name}>
-            <div className="skill-level-head">
-              <span>{skill.name}</span>
-              <span className="level-tag">{skill.level}</span>
-            </div>
-            <div className="skill-bar">
-              <div className="skill-fill" style={{ width: levelWidth[skill.level] }}></div>
-            </div>
+      <div className="skills-max">
+        {/* Header */}
+        <div className="skills-header">
+          <div>
+            <p className="section-label skills-section-label">02 / SKILLS</p>
+            <h2 id="skills-heading" className="skills-headline reveal">
+              TECH STACK.
+            </h2>
           </div>
-        ))}
+          <p className="skills-sub reveal">
+            Technologies and tools I use to build scalable products.
+          </p>
+        </div>
+
+        {/* Clean Neo-Brutalist Skill Wall */}
+        <div className="skills-wall-clean">
+          {skillCategories.map((cat, index) => (
+            <div
+              key={cat.name}
+              className={`skill-cat-row accent-row-${cat.accent} reveal`}
+              style={{ transitionDelay: `${index * 0.05}s` }}
+            >
+              {/* Category Label */}
+              <div className="skill-cat-label-col">
+                <span className={`cat-badge badge-${cat.accent}`}>{cat.name}</span>
+              </div>
+
+              {/* Skill Badges */}
+              <div className="skill-tags-group">
+                {cat.skills.map((skill, si) => (
+                  <div
+                    key={si}
+                    className={`skill-pill hover-${cat.accent}`}
+                    role="listitem"
+                    aria-label={skill.name}
+                  >
+                    <span className="pill-icon" aria-hidden="true">{skill.icon}</span>
+                    <span className="pill-name">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</section>
 
-)
-
+    </section>
+  );
 }
-
-export default Skills;
