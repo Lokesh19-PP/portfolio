@@ -1,208 +1,267 @@
-.header {
+/* ===================================================
+   NEO-BRUTALIST NAVBAR
+   =================================================== */
+
+.nb-header {
   position: fixed;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  width: 90%;
-  max-width: 1200px;
-  padding: 12px 32px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 5%;
+  height: 68px;
+  background: #F5F0E8;
+  border-bottom: 3px solid #111111;
+  transition: box-shadow 0.2s ease;
 }
 
-.header.scroll {
-  top: 12px;
-  background: var(--bg-card);
-  border-color: var(--glass-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.nb-header.scrolled {
+  box-shadow: 0 4px 0 #111111;
 }
 
-.logo h1 {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -0.5px;
-}
-
-.logo h1 span {
-  color: var(--primary);
-  text-shadow: 0 0 15px var(--primary-glow);
-}
-
-.nav-wrap {
+/* Logo */
+.nb-logo {
   display: flex;
   align-items: center;
-  gap: 40px;
-}
-
-.links {
-  display: flex;
-  list-style: none;
-  gap: 32px;
-}
-
-.links li a {
+  gap: 10px;
   text-decoration: none;
-  color: var(--text-muted);
-  font-family: var(--font-heading);
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
+  flex-shrink: 0;
 }
 
-.links li a::after {
+.nb-logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #111111;
+  color: #F5F0E8;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 3px solid #111111;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nb-logo:hover .nb-logo-mark {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #111111;
+  background: #FF5C35;
+}
+
+.nb-logo-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #111111;
+}
+
+/* Desktop Nav */
+.nb-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nb-nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 6px;
+}
+
+.nb-nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #111111;
+  text-decoration: none;
+  padding: 8px 14px;
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.nb-nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
+  bottom: 4px;
+  left: 14px;
+  right: 14px;
   height: 2px;
-  background: var(--primary);
-  transition: width 0.3s ease;
-  border-radius: var(--radius-full);
+  background: #FF5C35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
 }
 
-.links li a:hover {
-  color: var(--text-main);
+.nb-nav-link:hover::after {
+  transform: scaleX(1);
 }
 
-.links li a:hover::after {
-  width: 100%;
-}
-
-.theme-toggle {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  color: var(--text-main);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 18px;
-}
-
-.theme-toggle:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  transform: rotate(15deg);
-  box-shadow: 0 0 15px var(--primary-glow);
-}
-
-.header-actions {
+/* Right side */
+.nb-header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  flex-shrink: 0;
 }
 
-.icons {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-  padding-left: 20px;
-  border-left: 1px solid var(--glass-border);
-}
-
-.icons li a {
-  color: var(--text-muted);
-  font-size: 18px;
-  transition: all 0.3s ease;
+/* Static Decorative Corner Symbol (far right — non-clickable) */
+.nb-corner-symbol {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: #D9FF00;
+  border: 2px solid #111111;
+  box-shadow: 2px 2px 0 #111111;
+  user-select: none;
+  cursor: default;
+  pointer-events: auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.icons li a:hover {
-  color: var(--primary);
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px var(--primary-glow));
+.nb-symbol-spark {
+  color: #111111;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
 }
 
-.menu-toggle {
+.nb-corner-symbol:hover {
+  background: #FF5C35;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #111111;
+}
+
+.nb-corner-symbol:hover .nb-symbol-spark {
+  color: #ffffff;
+  transform: rotate(45deg);
+}
+
+/* Hamburger */
+.nb-hamburger {
   display: none;
   background: none;
-  border: none;
-  color: var(--text-main);
-  font-size: 24px;
+  border: 2px solid #111111;
+  color: #111111;
+  width: 38px;
+  height: 38px;
+  font-size: 1rem;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
-/* Mobile Nav */
-@media (max-width: 1024px) {
-  .nav-wrap {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 300px;
-    height: 100vh;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 40px;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1001;
-    gap: 40px;
-    align-items: flex-start;
+.nb-hamburger:hover {
+  background: #111111;
+  color: #F5F0E8;
+}
+
+/* Mobile Menu */
+.nb-mobile-menu {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #F5F0E8;
+  border-top: 3px solid #111111;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 5% 40px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.nb-mobile-menu.open {
+  transform: translateX(0);
+}
+
+.nb-mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.nb-mobile-links li {
+  border-bottom: 2px solid #111111;
+}
+
+.nb-mobile-links li:first-child {
+  border-top: 2px solid #111111;
+}
+
+.nb-mobile-links a {
+  display: block;
+  padding: 22px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111111;
+  text-decoration: none;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+
+.nb-mobile-links a:hover {
+  color: #FF5C35;
+  padding-left: 16px;
+}
+
+.nb-mobile-footer {
+  display: flex;
+  gap: 24px;
+}
+
+.nb-mobile-footer a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111111;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #111111;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nb-mobile-footer a:hover {
+  color: #FF5C35;
+  border-color: #FF5C35;
+}
+
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+@media (max-width: 900px) {
+  .nb-nav {
+    display: none;
   }
 
-  .theme-toggle {
-    align-self: center;
-    margin-top: 20px;
-  }
-
-  .nav-wrap.open {
-    right: 0;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-  }
-
-  .links {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .links li a {
-    font-size: 24px;
-    font-weight: 700;
-  }
-
-  .icons {
-    padding-left: 0;
-    border-left: none;
-    width: 100%;
-    justify-content: flex-start;
-    gap: 24px;
-  }
-
-  .icons li a {
-    font-size: 24px;
-  }
-
-  .menu-toggle {
-    display: block;
-    z-index: 1002;
+  .nb-hamburger {
+    display: flex;
   }
 }
 
-@media (max-width: 640px) {
-  .header {
-    width: 95%;
-    padding: 10px 20px;
+@media (max-width: 480px) {
+  .nb-logo-name {
+    display: none;
   }
-  
-  .logo h1 {
-    font-size: 20px;
+
+  .nb-header {
+    padding: 0 20px;
   }
 }

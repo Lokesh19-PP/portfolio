@@ -1,81 +1,94 @@
-import "./Header.css"
-import { useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { SiLeetcode } from "react-icons/si"
-import { FaSun, FaMoon } from "react-icons/fa"
+import "./Header.css";
+import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-function Header({ theme, toggleTheme }) {
+function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    const [scrolled, setScrolled] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true)
-            } else {
-                setScrolled(false)
-            }
-        }
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900) setMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-        window.addEventListener("scroll", handleScroll)
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+  const closeMenu = () => setMenuOpen(false);
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 900) {
-                setMenuOpen(false)
-            }
-        }
+  return (
+    <header className={`nb-header${scrolled ? " scrolled" : ""}`} role="banner">
+      {/* Logo */}
+      <a href="#hero" className="nb-logo" aria-label="Go to top">
+        <span className="nb-logo-mark">LP</span>
+        <span className="nb-logo-name">LOKESH</span>
+      </a>
 
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
+      {/* Desktop Navigation */}
+      <nav className="nb-nav" aria-label="Main navigation">
+        <ul className="nb-nav-links">
+          <li><a href="#hero" className="nb-nav-link">Home</a></li>
+          <li><a href="#about" className="nb-nav-link">About</a></li>
+          <li><a href="#skills" className="nb-nav-link">Skills</a></li>
+          <li><a href="#project" className="nb-nav-link">Projects</a></li>
+          <li><a href="#experience" className="nb-nav-link">Journey</a></li>
+          <li><a href="#contact" className="nb-nav-link">Contact</a></li>
+        </ul>
+      </nav>
 
-    return (
-        <header className={scrolled ? "header scroll" : "header"}>
-            <div className="logo">
-                <h1><span>L</span>okesh</h1>
-            </div>
+      {/* Right side: hamburger + completely static decorative mark */}
+      <div className="nb-header-right">
+        <button
+          className={`nb-hamburger${menuOpen ? " open" : ""}`}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
+        </button>
 
-            <div className="header-actions">
-                <button
-                    type="button"
-                    className="menu-toggle"
-                    aria-label="Toggle menu"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                >
-                    <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
-                </button>
-            </div>
+        {/* Completely static decorative corner symbol — no link, no href, non-clickable */}
+        <div className="nb-corner-symbol" aria-hidden="true" title="Creative Developer">
+          <span className="nb-symbol-spark">✦</span>
+        </div>
+      </div>
 
-            <div className={menuOpen ? "nav-wrap open" : "nav-wrap"}>
-                <ul className="links">
-                    <li><a href="#hero" onClick={() => setMenuOpen(false)}>Home</a></li>
-                    <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-                    <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
-                    <li><a href="#project" onClick={() => setMenuOpen(false)}>Project</a></li>
-                    <li><a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a></li>
-                    <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-                </ul>
-
-                <ul className="icons">
-                    <li><a href="https://github.com/Lokesh19-PP" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a></li>
-                    <li><a href="https://leetcode.com/u/lokesh191005/" target="_blank" rel="noreferrer"><SiLeetcode /></a></li>
-                    <li><a href="https://linkedin.com/in/lokesh-pawar-4b834a312/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a></li>
-                    <li><a href="https://www.instagram.com/lokesh_pawar_19/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram} /></a></li>
-                </ul>
-
-                <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
-                    {theme === 'dark' ? <FaSun /> : <FaMoon />}
-                </button>
-            </div>
-        </header>
-    )
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`nb-mobile-menu${menuOpen ? " open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav aria-label="Mobile navigation">
+          <ul className="nb-mobile-links">
+            <li><a href="#hero" onClick={closeMenu}>Home</a></li>
+            <li><a href="#about" onClick={closeMenu}>About</a></li>
+            <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+            <li><a href="#project" onClick={closeMenu}>Projects</a></li>
+            <li><a href="#experience" onClick={closeMenu}>Journey</a></li>
+            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+          </ul>
+        </nav>
+        <div className="nb-mobile-footer">
+          <a href="https://github.com/Lokesh19-PP" target="_blank" rel="noreferrer">GITHUB</a>
+          <a href="https://linkedin.com/in/lokesh-pawar-4b834a312/" target="_blank" rel="noreferrer">LINKEDIN</a>
+          <a href="mailto:lokeshpawar1910@gmail.com">EMAIL</a>
+        </div>
+      </div>
+    </header>
+  );
 }
 
-export default Header
+export default Header;
