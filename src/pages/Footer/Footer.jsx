@@ -1,43 +1,63 @@
-import "./Footer.css"
+import "./Footer.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
-function Footer(){
+function Footer() {
+  const year = new Date().getFullYear();
 
-  return(
+  return (
+    <footer className="nb-footer" role="contentinfo">
 
-    <footer className="footer">
-      <div className="footer-container">
+      {/* Top strip */}
+      <div className="footer-top">
         <div className="footer-brand">
-          <h2><span>L</span>okesh</h2>
-          <p>Full Stack Developer specializing in building exceptional digital experiences.</p>
-        </div>
-
-        <div className="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#project">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-social">
-          <h3>Connect</h3>
-          <div className="social-icons">
-            <a href="https://github.com/Lokesh19-PP" target="_blank" rel="noreferrer"><FaGithub/></a>
-            <a href="https://www.linkedin.com/in/lokesh-pawar-4b834a312/" target="_blank" rel="noreferrer"><FaLinkedin/></a>
+          <span className="footer-logo">LP</span>
+          <div className="footer-brand-text">
+            <p className="footer-name">LOKESH PAWAR</p>
+            <p className="footer-role">FULL STACK DEVELOPER</p>
           </div>
         </div>
+
+        <div className="footer-social" aria-label="Social links">
+          <a
+            href="https://github.com/Lokesh19-PP"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-social-icon"
+            aria-label="GitHub profile"
+            id="footer-github"
+          >
+            <FaGithub aria-hidden="true" />
+          </a>
+          <a
+            href="https://linkedin.com/in/lokesh-pawar-4b834a312/"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-social-icon"
+            aria-label="LinkedIn profile"
+            id="footer-linkedin"
+          >
+            <FaLinkedin aria-hidden="true" />
+          </a>
+          <a
+            href="mailto:lokeshpawar1910@gmail.com"
+            className="footer-social-icon"
+            aria-label="Send email"
+            id="footer-email"
+          >
+            <MdEmail aria-hidden="true" />
+          </a>
+        </div>
       </div>
-      
+
+      {/* Bottom bar */}
       <div className="footer-bottom">
-        <p>© 2026 Lokesh Pawar. All rights reserved.</p>
+        <p className="footer-copy">LOKESH © {year}</p>
+        <p className="footer-tagline">BUILT WITH CODE + COFFEE ☕</p>
+        <p className="footer-made">DESIGNED &amp; DEVELOPED BY LOKESH PAWAR</p>
       </div>
     </footer>
-
-  )
-
+  );
 }
 
 export default Footer;
